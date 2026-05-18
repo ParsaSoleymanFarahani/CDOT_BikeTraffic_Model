@@ -132,15 +132,26 @@ tr:hover td{background:var(--surface2)}
     <div class="card"><h3>Day-of-week mean ADT</h3><div id="dowChart" style="height:300px"></div></div>
   </div>
   <div class="grid g2">
-    <div class="card"><h3>Counter type split</h3><div id="ctPie" style="height:260px"></div></div>
-    <div class="card">
-      <h3>Dataset summary</h3>
-      <table>
-        <thead><tr><th>Stat</th><th>Value</th></tr></thead>
-        <tbody id="descTable"></tbody>
-      </table>
-    </div>
+  <div class="card">
+    <h3>Site type split</h3>
+    <div id="locTypePie" style="height:260px"></div>
   </div>
+
+  <div class="card">
+    <h3>Observation split by site type</h3>
+    <div id="obsTypePie" style="height:260px"></div>
+  </div>
+</div>
+
+<div class="card" style="margin-top:16px">
+  <h3>Dataset summary</h3>
+  <table>
+    <thead>
+      <tr><th>Stat</th><th>Value</th></tr>
+    </thead>
+    <tbody id="descTable"></tbody>
+  </table>
+</div>
 </section>
 
 <!-- ══ PAGE 2 ══ -->
@@ -322,7 +333,23 @@ function render() {
     type:'bar', marker:{color:css('--blue')}
   }], lay({xaxis:{title:'Day of week'}, yaxis:{title:'Mean ADT'}}), {displayModeBar:false,responsive:true});
 
-  Plotly.newPlot('ctPie', [{
+ Plotly.newPlot('locTypePie', [{
+  labels: ['Continuous sites', 'Short-term sites'],
+  values: [66, 74],
+  type: 'pie',
+  marker: { colors: [css('--teal'), css('--gold')] },
+  hole: 0.38
+}], lay({
+  showlegend: true,
+  legend: {
+    x: 0.5,
+    xanchor: 'center',
+    y: -0.05,
+    orientation: 'h'
+  }
+}));
+
+  Plotly.newPlot('obsTypePie', [{
     labels: D.ct.map(d=>d.counter_type), values: D.ct.map(d=>d.count), type:'pie',
     marker:{colors:[css('--teal'),css('--gold')]}, hole:0.38
   }], lay({showlegend:true, legend:{x:0.5,xanchor:'center',y:-0.05,orientation:'h'}}), {displayModeBar:false,responsive:true});
