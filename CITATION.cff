@@ -1,0 +1,20 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: CDOT Bike Traffic Model
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Parsa
+    family-names: Soleyman Farahani
+    email: parsa.soleymanfarahani@ucdenver.edu
+    orcid: 'https://orcid.org/0009-0001-1783-2714'
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.21422790
+license: MIT
+version: 'v1.0.0 '
+date-released: '2026-05-31'
