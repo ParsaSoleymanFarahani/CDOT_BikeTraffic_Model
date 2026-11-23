@@ -734,8 +734,12 @@ function initPaceMap() {
   if (!window.L) return;
   if (!paceMap) {
     paceMap = L.map('pace-map',{preferCanvas:true}).setView([39.0,-105.5],7);
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{
-      attribution:'&copy; OpenStreetMap contributors &copy; CARTO', maxZoom:20
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',{
+      attribution:'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ', maxZoom:20
+    }).addTo(paceMap);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}', {
+      opacity: 0.45, // Make labels subtle so they don't overpower the points
+      maxZoom: 20
     }).addTo(paceMap);
 
     // Populate county dropdown
